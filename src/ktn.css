@@ -1,0 +1,308 @@
+body {
+    width:100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#mc {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: dimgrey;
+    overflow: hidden;
+}
+
+#rb {
+    position: absolute;
+    display: none;
+    height: 84vh;
+    top: 8vh;
+    right: 0;
+    width: 112px;
+    padding: 4px;
+    background-color: gainsboro;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-radius: 5px 0 0 5px;
+}
+
+#ddd::-webkit-scrollbar, #rb::-webkit-scrollbar, #mv::-webkit-scrollbar{
+    width:4px;
+}
+#ddd::-webkit-scrollbar-track, #rb::-webkit-scrollbar-track, #mv::-webkit-scrollbar-track{
+    background: rgb(239, 239, 239);
+    border-radius:1px;
+}
+#ddd::-webkit-scrollbar-thumb, #rb::-webkit-scrollbar-thumb, #mv::-webkit-scrollbar-thumb{
+    background: #bfbfca;
+    border-radius:2px;
+}
+#ddd::-webkit-scrollbar-thumb:hover, #rb::-webkit-scrollbar-thumb:hover, #mv::-webkit-scrollbar-thumb{
+    background: #999;
+}
+
+#trb {
+    position: absolute;
+    height: 60px;
+    width: 16px;
+    right: 0px;
+    top: 50vh;
+    margin-top: -30px;
+    background-color: rgba(233,233,233,0.2);
+    border-radius: 4px 0 0 4px;
+    cursor: pointer;
+}
+
+#trb:hover {
+    background-color: rgba(233,233,233,0.8);
+}
+
+#trb span {
+    width: 4px;
+    height: 40px;
+    background-color: #5f5f5f;
+    display: block;
+    left: 6px;
+    top: 10px;
+    position: relative;
+    border-radius: 2px;
+}
+
+#bb {
+    position: absolute;
+    display: none;
+    height: 52px;
+    bottom: 0;
+    overflow: hidden;
+    background-color: gainsboro;
+    border-radius: 5px 5px 0 0;
+    padding: 4px;
+}
+
+#tbb {
+    position: absolute;
+    height: 16px;
+    width: 60px;
+    bottom: 0;
+    background-color: rgba(233,233,233,0.2);
+    border-radius: 4px 4px 0 0;
+    cursor: pointer;
+}
+
+#tbb:hover {
+    background-color: rgba(233,233,233,0.8);
+}
+
+#tbb span {
+    width: 40px;
+    height: 4px;
+    background-color: #5f5f5f;
+    display: block;
+    left: 10px;
+    top: 6px;
+    position: relative;
+    border-radius: 4px;
+}
+
+#bb div {
+    text-align: center;
+    position: relative;
+    height: 52px;
+}
+
+#bb div span {
+    display: inline-block;
+    overflow: hidden;
+    margin-left: 4px;
+    margin-right: 4px;
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    width: 52px;
+    height: 52px;
+    line-height: 52px;
+    background-color: darkgray;
+    cursor: pointer;
+}
+
+#rc {
+    position: relative;
+    width: 112px;
+}
+
+#rc div {
+    width: 112px;
+    height: 56px;
+    margin-top: 4px;
+    border-bottom: 1px solid darkgray;
+}
+
+#rc div p {
+    height: 28px;
+    line-height: 28px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#rc div > p {
+    margin-left: 10px;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#rc div p img {
+    width: 24px;
+    height: 24px;
+    margin-left: 6px;
+    position: relative;
+    cursor: pointer;
+}
+
+#rc div p > img {
+    left: 40px;
+}
+
+#dmc {
+    height: 32px;
+    padding: 8px;
+    position: absolute;
+    bottom: 100px;
+    background-color: aliceblue;
+    border-radius: 4px;
+    display: none;
+}
+
+#dmi {
+    height: 24px;
+    line-height: 24px;
+    font-size: 14px;
+    border: #1f1f1f solid 1px;
+    margin-left: 2px;
+}
+
+#dmb {
+    width: 58px;
+    right: 0;
+    height: 34px;
+    line-height: 34px;
+    font-size: 16px;
+    border: #5f5f5f solid 1px;
+    border-radius: 3px;
+    background-color: rgb(52, 118, 194);
+    color: black;
+    margin-left: 8px;
+}
+
+#ddc {
+    position: absolute;
+    border: #bfbfca solid 2px;
+    background-color: rgba(233,233,233,0.2);
+    top: 40px;
+    left: 40px;
+}
+
+.ddc-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+.ddc-open {
+    width: 240px;
+    height: 400px;
+    border-radius: 5px;
+}
+
+.ddc-close #ddt {
+    height: 40px;
+    width: 40px;
+    border-radius: 22px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 40px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: x-large;
+    color: chartreuse;
+}
+
+.ddc-open #ddt {
+    height: 40px;
+    width: 240px;
+    position: absolute;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+}
+
+#ddc.ddc-close:hover, .ddc-open #ddt:hover {
+    background-color: rgba(233,233,233,0.8);
+}
+
+.ddc-close #ddd {
+    display: none;
+}
+
+.ddc-open #ddd {
+    position: absolute;
+    top: 45px;
+    left: 5px;
+    height: 350px;
+    width: 230px;
+    display: block;
+    overflow-y: auto;
+}
+
+#ddd p {
+    background-color:rgba(233, 233, 233, 0.8);
+    margin: 5px;
+    padding: 5px 10px;
+    max-width: 180px;
+    border-radius: 4px;
+    word-wrap: break-word;
+    clear: both;
+    float: left;
+}
+
+#ddd p.mine {
+    clear: both;
+    float: right;
+}
+
+#mv {
+    position: absolute;
+    background-color: black;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+}
+
+#mv audio, #mv video.mv-u, #mv video.mv-b {
+    display: none;
+}
+
+#mv video.mv-n {
+    position: relative;
+    clear: both;
+    width: auto;
+    height: auto;
+    max-width: 48%;
+    max-height: 48%;
+    min-width: 31%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+
+#mv video.mv-a {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>sid</title>
+    <link rel="stylesheet" href="src/ktm.css" />
+</head>
+<body>
+<div i='主容器' id='mc'>
+    <div i='主视频显示' id='mv'></div>
+</div>
+<div i='侧边区' id='rb'>
+    <div i='会议人员的列表,每个子项为一个div' id = 'rc'>
+    </div>
+</div>
+<div i='侧边展开和收拢' id='trb'>
+    <span></span>
+</div>
+<div i='底边功能控制区' id='bb'>
+    <div i='一些功能按钮'>
+        <span i='话筒' id='ab'><img src='img/microphone_off.png'></span>
+        <span i='视频' id='vb'><img src='img/webcam_off.png'></span>
+        <span i='投屏' id='ds'><img src='img/monitor.png'></span>
+        <span i='弹幕' id='dm'><img src='img/dm_on.png'></span>
+        <span i='结束' id='qu'><img src='img/power.png'></span>
+    </div>
+</div>
+<div i="底边展开和收拢" id='tbb'>
+    <span></span>
+</div>
+<div i="弹幕编辑区容器" id='dmc'>
+    <input i='弹幕输入框' id='dmi' type='text'/>
+    <input i='弹幕发送按钮' id='dmb' type='button' value='发送'/>
+</div>
+<div i='弹幕显示区容器' id='ddc' class='ddc-close'>
+    <div i='弹幕显示区标题' id='ddt'>
+    </div>
+    <div i='弹幕显示区' id='ddd'>
+    </div>
+</div>
+</body>
+<script src='src/ktm.js'></script>
+</html>

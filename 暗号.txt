@@ -1,0 +1,147 @@
+============== 信息结构 ==============
+
+======== Javascript ========
+Kt: 课堂对象 成员版
+{
+    cnc     {number} 成员数
+    ds      {number} 投屏对象号
+    dsable  {boolean} 投屏权限
+    dmable  {boolean} 弹幕权限
+    ktm     {object ru} 主持人对象
+    ktu     {array{object ru}} 成员对象列表
+}
+
+Kt: 课堂对象 主持人版
+{
+    cnc     {number} 成员数
+    ds      {object ds} 投屏对象
+    dsable  {boolean} 投屏是否开启 (全局)
+    dmable  {boolean} 弹幕是否开启 (全局)
+    ktm     {object mu} 主持人对象
+    ktu     {array{object mu}} 成员对象列表
+}
+
+ru: 成员对象
+{
+    name    {string} 昵称
+    aopen   {boolean} 声音开启
+    vopen   {boolean} 视频开启
+    avable  {boolean} 声音视频权限
+}
+
+mu: 成员对象
+{
+    name    {string} 昵称
+    aopen   {boolean} 声音开启
+    vopen   {boolean} 视频开启
+    avable  {boolean} 声音视频权限
+    dsable  {boolean} 投屏权限
+    dmable  {boolean} 弹幕权限
+}
+
+======== Python ========
+dict Kts: 所有课堂
+{
+    sid:    {class Kt} 课堂类对象
+}
+
+class Kt: 课堂类
+{
+    id      {int} 编号
+    inc     {int} 数组指针
+    cnc     {int} 成员数
+    ds      {dict ds} 投屏对象
+    dsable  {bool} 投屏启用
+    dmable  {bool} 弹幕启用
+    Ktm     {dict m} 主持人
+    Ktu     {array{dict u}} 成员列表
+}
+
+dict m: 主持人
+{
+    name:   {str} 昵称
+    ws:     {class ws} WebSocket对象
+    aopen:  {bool} 声音开启
+    vopen:  {bool} 视频开启
+}
+
+dict u: 成员
+{
+    name:   {str} 昵称
+    ws:     {class ws} WebSocket对象
+    aopen:  {bool} 声音开启
+    vopen:  {bool} 视频开启
+    avable: {bool} 声音视频权限
+    dsable: {bool} 投屏权限
+    dmable: {bool} 弹幕权限
+}
+
+class ws: WebSocket对象
+{
+    ...
+    sid     {str} 课堂号
+    idx     {int} 支持人(-1)、用户号
+}
+
+
+============== 信息传递 ==============
+
+======== 成员类型 ========
+M: 主持人
+U: 用户（指自己）
+R: 成员（指除自己以为的成员）
+
+======== des字段 ========
+* 表示Py、Js均接收 否则仅Js接收
+{
+    min:    *   {M}         主持人进入
+    mout:   *   {M}         主持人退出
+    uin:    *   {U}         用户进入
+    uout:   *   {U}         用户退出
+    Rin:        {M, U, R}   成员进入
+    Rout:       {M, U, R}   成员退出
+    Rover:      {U, R}      课堂结束
+    
+    rkt:    *   {M, U, R}   重新拉取kt信息
+    
+    rrn:    *   {M, U}      改名发送
+    Rrn:        {M, U, R}   改名接收
+    
+    rdm:    *   {M, U}      弹幕发送
+    Rdm:        {M, U, R}   弹幕接收
+    
+    mdmo:   *   {M}         主持人开启弹幕
+    mdmd:   *   {M}         主持人关闭弹幕
+    Rdmo        {M, U, R}   弹幕开启
+    Rdmd        {M, U, R}   弹幕关闭
+    
+    rds     *   {M, U}      投屏开或关
+    Rds         {M, U, R}   接收投屏或关闭投屏
+
+    mdso:   *   {M}         主持人允许投屏
+    mdsd:   *   {M}         主持人禁止投屏
+    Rdso        {M, U, R}   投屏开启
+    Rdsd        {M, U, R}   投屏关闭
+    
+    mavo:   *   {M}         主持人允许成员操作
+    mavd:   *   {M}         主持人禁止成员操作
+    Ravo:       {M, U, R}   成员允许操作
+    Ravd:       {M, U, R}   成员禁止操作
+    
+    rao:    *   {M, U}      开麦
+    rad:    *   {M, U}      关麦
+    Rao:        {M, U, R}   成员开麦
+    Rad:        {M, U, R}   成员关麦
+    
+    rvo:    *   {M, U}      开视频
+    rvd:    *   {M, U}      关视频
+    Rvo:        {M, U, R}   成员开视频
+    Rvd:        {M, U, R}   成员关视频
+
+    rice    *   {M, U}      ice发起
+    Rice        {M, R}      ice接收
+    rsdp    *   {M, U}      sdp发起
+    Rsdp        {M, R}      sdp接收
+
+    init    *   {M, U}      在新人进入时的特殊暗号
+}
