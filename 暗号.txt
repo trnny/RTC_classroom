@@ -1,27 +1,27 @@
 ============== 信息结构 ==============
 
 ======== Javascript ========
-Kt: 课堂对象 成员版
+Kt: 课堂对象 (普通成员版)
 {
-    cnc     {number} 成员数
-    ds      {number} 投屏对象号
-    dsable  {boolean} 投屏权限
-    dmable  {boolean} 弹幕权限
+    cnc     {number} 成员数 (不包括主持人)
+    ds      {number | null} 投屏对象号 null表示没有投屏
+    dsable  {boolean} 投屏开启
+    dmable  {boolean} 弹幕开启
     ktm     {object ru} 主持人对象
     ktu     {array{object ru}} 成员对象列表
 }
 
-Kt: 课堂对象 主持人版
+Kt: 课堂对象 (主持人版)
 {
-    cnc     {number} 成员数
-    ds      {object ds} 投屏对象
+    cnc     {number} 成员数 (不包括主持人)
+    ds      {number | null} 投屏对象号 null表示没有投屏
     dsable  {boolean} 投屏是否开启 (全局)
     dmable  {boolean} 弹幕是否开启 (全局)
     ktm     {object mu} 主持人对象
     ktu     {array{object mu}} 成员对象列表
 }
 
-ru: 成员对象
+ru: 成员对象 （普通成员版）
 {
     name    {string} 昵称
     aopen   {boolean} 声音开启
@@ -29,7 +29,7 @@ ru: 成员对象
     avable  {boolean} 声音视频权限
 }
 
-mu: 成员对象
+mu: 成员对象  (主持人版)
 {
     name    {string} 昵称
     aopen   {boolean} 声音开启
@@ -49,8 +49,8 @@ class Kt: 课堂类
 {
     id      {int} 编号
     inc     {int} 数组指针
-    cnc     {int} 成员数
-    ds      {dict ds} 投屏对象
+    cnc     {int} 成员数 (不包括主持人)
+    ds      {int | None} 投屏对象号 None表示没有投屏
     dsable  {bool} 投屏启用
     dmable  {bool} 弹幕启用
     Ktm     {dict m} 主持人
@@ -80,7 +80,7 @@ class ws: WebSocket对象
 {
     ...
     sid     {str} 课堂号
-    idx     {int} 支持人(-1)、用户号
+    idx     {int} 主持人(-1)、用户号
 }
 
 
@@ -91,7 +91,13 @@ M: 主持人
 U: 用户（指自己）
 R: 成员（指除自己以为的成员）
 
+======== 消息结构 ========
+Js: {des: des, ...}
+Py: {'des': des, 'data': {...}}
+
 ======== des字段 ========
+字段首字母大写为转发消息，一般是来自于请求的转发，在客户端不需要判断data.ok (没有data.ok)
+字段首字母小写为回执消息，一般是来自于请求的回执，在客户端一般需要通过data.ok判断请求是否成功
 * 表示Py、Js均接收 否则仅Js接收
 {
     min:    *   {M}         主持人进入
