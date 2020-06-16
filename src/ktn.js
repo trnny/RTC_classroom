@@ -57,6 +57,12 @@ var mc = document.getElementById('mc'),     // 主容器
     dmi.style['width'] = fx - 194 + 'px';
 })();
 
+document.addEventListener('keydown', (e) => {
+    if(e.which === 122) {
+        e.preventDefault();
+        mv.requestFullscreen();
+    }
+});
 
 function EventEmitter() {
     this.events = {};
