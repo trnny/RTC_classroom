@@ -334,7 +334,7 @@ var closePC = i => {
 // 获取(或初始化)与i的PeerConnection
 var getPC = i => {
     if(PCs[i]) return PCs[i];
-    var pc = new window.webkitRTCPeerConnection(iceServer);
+    var pc = new window.RTCPeerConnection(iceServer);
     PCs[i] = pc;
     pc.index = 0;
     pc._initA = null;
